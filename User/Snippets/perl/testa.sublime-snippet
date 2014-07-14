@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[
+my @array = ();
+foreach my \$i (1..4) {
+	my \$hash = {
+		id   => \$i,
+		name => 'hoge',
+	};
+	push(@music, \$hash);
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>testa</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.perl</scope>
+</snippet>

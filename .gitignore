@@ -1,0 +1,4 @@
+User/*.cache
+User/*_tmp
+User/encoding_cache.json
+User/Package Control.last-run

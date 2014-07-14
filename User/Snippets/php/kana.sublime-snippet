@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[
+public function afterRender(\$layoutFile) {
+	parent::afterRender(\$layoutFile);
+	\$output = \$this->_View->output;
+	// 英数字とスペース、カタカナを半角に変換
+	\$output = mb_convert_kana(\$output, 'ask', 'UTF-8');
+	\$this->_View->output = \$output;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>kana</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

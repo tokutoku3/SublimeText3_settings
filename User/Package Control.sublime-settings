@@ -1,0 +1,38 @@
+{
+	"installed_packages":
+	[
+		"All Autocomplete",
+		"ApacheConf.tmLanguage",
+		"AutoFileName",
+		"BracketHighlighter",
+		"Codecs33",
+		"ColorPicker",
+		"ConvertToUTF8",
+		"CSS Snippets",
+		"DocBlockr",
+		"Emmet",
+		"Hayaku - tools for writing CSS faster",
+		"HTML5",
+		"jQuery",
+		"LineEndings",
+		"Markdown Extended",
+		"Monokai Extended",
+		"OmniMarkupPreviewer",
+		"Phpcs",
+		"Predawn",
+		"SideBarEnhancements",
+		"Smart Delete",
+		"SublimeCodeIntel",
+		"SublimeLinter",
+		"SublimeLinter-contrib-perl",
+		"SublimeLinter-csslint",
+		"SublimeLinter-jshint",
+		"SublimeLinter-php",
+		"SublimeLinter-phplint",
+		"SublimeLinter-ruby",
+		"Theme - Centurion",
+		"Theme - Flatland",
+		"Theme - itg.flat",
+		"Theme - Spacegray"
+	]
+}
