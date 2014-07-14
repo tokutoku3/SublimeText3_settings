@@ -1,11 +1,11 @@
 <snippet>
 	<content><![CDATA[
-use Data::Dumper;
-\$Data::Dumper::Indent = 1;
-use Time::HiRes qw( gettimeofday tv_interval );
+my \$debug_start = [gettimeofday];
+my \$debug_end = [gettimeofday];
+warn Dumper tv_interval( \$debug_start, \$debug_end );
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>dumper</tabTrigger>
+	<tabTrigger>stest</tabTrigger>
 	<!-- Optional: Set a scope to limit where the snippet will trigger -->
 	<scope>source.perl</scope>
 </snippet>
