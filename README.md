@@ -3,9 +3,11 @@ SublimeText3_settings
 
 Sublime Text settings for Mac OS X.
 
-### 以下の手順で適用すれば設定を同期できる
+以下の手順で適用すれば設定を同期できる
 
-* Rictyフォントを生成する
+<br>
+
+* **Rictyフォントを生成する**
 
 まだMacにRictyがインストールされていない場合は、以下のコマンドで自動生成する
 
@@ -17,7 +19,9 @@ Sublime Text settings for Mac OS X.
 > http://blog.sotm.jp/2014/01/10/Installing-SublimeText3-iTerm2-Ricty-on-MacOSX-109/
 
 
-* Package以下のファイルをclone
+<br>
+
+* **Package以下のファイルをclone**
 
 ディレクトリ移動
 
