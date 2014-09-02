@@ -1,0 +1,26 @@
+<snippet>
+	<content><![CDATA[
+my \$regist = Time::Piece->strptime(${1:date1}, '%Y-%m-%d %H:%M:%S');
+my \$today  = Time::Piece->strptime(${2:date2}, '%Y-%m-%d %H:%M:%S');
+
+# 日付の計算
+my \$year = \$today->year;
+my \$month = \$today->mon - 6;
+if (\$month <= 0) {
+  \$month += 12;
+  \$year--;
+}
+# 今日の日付が比較月の月末より大きい場合、
+# 月末日を日付にセットする
+my \$mday = (\$today->mday > \$regist->month_last_day)
+              ? \$regist->month_last_day 
+              : \$today->mday;
+
+my \$border   = ymd(\$year, \$month, \$mday);
+my \$s_regist = date(\$regist->ymd());
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>dcalc</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.perl</scope>
+</snippet>

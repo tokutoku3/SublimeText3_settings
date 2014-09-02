@@ -21,7 +21,7 @@ class Perl(Linter):
     syntax = ('modernperl', 'perl')
     executable = 'perl'
 
-    regex = r'(?P<message>.+?) at .+? line (?P<line>\d+)(, near "(?P<near>.+?)")?'
+    regex = r'(?P<message>.+?) at - line (?P<line>\d+)(, near "(?P<near>.+?)")?'
     error_stream = util.STREAM_STDERR
 
     def cmd(self):

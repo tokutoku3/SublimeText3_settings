@@ -1,8 +1,9 @@
 <snippet>
 	<content><![CDATA[
+use Time::HiRes qw( gettimeofday tv_interval );
 my \$debug_start = [gettimeofday];
 my \$debug_end = [gettimeofday];
-warn Dumper tv_interval( \$debug_start, \$debug_end );
+warn '[[[TIME]]] ' . tv_interval( \$debug_start, \$debug_end );
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
 	<tabTrigger>stest</tabTrigger>

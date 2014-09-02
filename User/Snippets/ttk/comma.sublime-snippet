@@ -1,10 +1,9 @@
 <snippet>
 	<content><![CDATA[
-use Data::Dumper;
-\$Data::Dumper::Indent = 1;
+[% ${1:n}.chunk(-3).join(',') %]
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>dumper</tabTrigger>
+	<tabTrigger>comma</tabTrigger>
 	<!-- Optional: Set a scope to limit where the snippet will trigger -->
-	<scope>source.perl</scope>
+	<!-- <scope>source.python</scope> -->
 </snippet>
