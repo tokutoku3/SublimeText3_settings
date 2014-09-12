@@ -1,0 +1,129 @@
+<snippet>
+  <content><![CDATA[
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use lib qw( /x/hkt48/lib );
+BEGIN {
+  my \$hostname = `hostname`;
+  chomp(\$hostname);
+  if (\$hostname =~ m/^k1/){
+    \$ENV{'SLEDGE_CONFIG_NAME'} = 'dev';
+  }elsif (\$hostname =~ m/^k2/){
+    \$ENV{'SLEDGE_CONFIG_NAME'} = 'dev2';
+  }
+};
+
+use Date::Simple qw/ today /;
+use Time::Piece::MySQL;
+use PAQ::Mailer;
+
+use Data::Dumper;
+\$Data::Dumper::Indent = 1;
+
+use constant {
+  TERM_OF_KEEP => 7,
+};
+
+
+#-------------------------------------------------------------
+# Main:: バッチ実行部分
+#
+# ${1:comment}
+#
+# 処理の過程でエラーが生じた場合、
+# 担当者にメールで通知する
+#
+# auther  : tokuyama
+#-------------------------------------------------------------
+Main:{
+  warn '-' x 20 . ' batch_name.pl ' . '-' x 20;
+
+  ### 実行速度集計開始 for debug ###
+  use Time::HiRes qw( gettimeofday tv_interval );
+  my \$debug_start = [gettimeofday];
+
+  # 自分と同じスクリプトが起動していた場合 exit
+  if (&_duplicate_exec()) {
+    warn "\n[[[[batch_name.pl][duplicate_exec][end]]]]\n";
+    exit(1);
+  }
+
+  # メイン処理実行
+  eval { &_exec(); };
+
+  # エラーが発生した場合はアラートメール送信
+  if (\$@) {
+    warn '[[[ERROR OCCURRED]]]';
+    warn Dumper \$@;
+    &_alert_mail(\$@);
+  }
+
+  ### 実行速度集計終了 for debug ###
+  my \$debug_end = [gettimeofday];
+  warn '[[[TIME]]] ' . tv_interval( \$debug_start, \$debug_end );
+}
+
+
+#-------------------------------------------------------------
+# バッチの重複起動確認
+#
+# param : \$count 許容する同時実行数
+#-------------------------------------------------------------
+sub _duplicate_exec {
+  my \$count = shift || 1;
+  my \$cmd = sprintf("/bin/ps -ef | grep '%s' | grep -v 'grep' | grep 'perl'", \$0);
+
+  # 重複チェック
+  my @event = `\$cmd`;
+  if (int(scalar(@event)) > int(\$count)) {
+    print sprintf("[_duplicate_exec]%s\n", \$0);
+    return int(scalar(@event));
+  }
+  return 0;
+}
+
+
+#-------------------------------------------------------------
+# バッチのメイン処理
+#-------------------------------------------------------------
+sub _exec {
+
+}
+
+
+#-------------------------------------------------------------
+# アラートメール送信
+#-------------------------------------------------------------
+sub _alert_mail {
+  my \$error_msg = shift;
+
+  eval {
+    my \$rst = PAQ::Mailer->new(
+      # to        => ['edama@camobile.com'],
+      to        => ['tokuyama@camobile.com'],
+      smtphost  => 'localhost',
+      subject   => '[hkt48_mobile][from]batch_name.pl', # check!
+      from      => 'info@m.hkt48.jp', # check!
+      message   => "\n\n" . \$error_msg,
+    )->send;
+  };
+
+  if (\$@){
+    warn "[_alert_mail][failed]\$@\n";
+  }
+
+  return;
+}
+
+
+1;
+
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>binit</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.perl</scope>
+</snippet>

@@ -33,9 +33,11 @@
 		"SublimeLinter-php",
 		"SublimeLinter-phplint",
 		"SublimeLinter-ruby",
+		"SyncedSideBar",
 		"Theme - Centurion",
 		"Theme - Flatland",
 		"Theme - itg.flat",
-		"Theme - Spacegray"
+		"Theme - Spacegray",
+		"Tomorrow Color Schemes"
 	]
 }

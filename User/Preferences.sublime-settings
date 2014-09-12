@@ -1,5 +1,5 @@
 {
-	"color_scheme": "Packages/User/Twilight2 (SL).tmTheme",
+	"color_scheme": "Packages/User/Twilight2.tmTheme",
 	"disable_formatted_linebreak": true,
 	"draw_indent_guides": true,
 	"draw_white_space": "all",
@@ -8,8 +8,8 @@
 	"highlight_line": true,
 	"ignored_packages":
 	[
-		"LineEndings",
-		"jQuery"
+		"jQuery",
+		"LineEndings"
 	],
 	"indent_guide_options":
 	[
@@ -22,5 +22,7 @@
 		"*.log"
 	],
 	"show_encoding": true,
-	"theme": "Centurion.sublime-theme"
+	"tab_size": 2,
+	"theme": "Centurion.sublime-theme",
+	"translate_tabs_to_spaces": true
 }

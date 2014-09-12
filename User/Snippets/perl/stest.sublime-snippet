@@ -1,7 +1,9 @@
 <snippet>
 	<content><![CDATA[
+### 実行速度集計開始 for debug ###
 use Time::HiRes qw( gettimeofday tv_interval );
 my \$debug_start = [gettimeofday];
+### 実行速度集計終了 for debug ###
 my \$debug_end = [gettimeofday];
 warn '[[[TIME]]] ' . tv_interval( \$debug_start, \$debug_end );
 ]]></content>
