@@ -31,4 +31,4 @@ Sublime Text settings for Mac OS X.
 
 あとはcloneすれば動くはず
 
-    $ git clone https://github.com/tokutoku3/SublimeText3_settings.git Package
+    $ git clone https://github.com/tokutoku3/SublimeText3_settings.git Packages
