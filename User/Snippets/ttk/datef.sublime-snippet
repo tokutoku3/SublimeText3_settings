@@ -1,0 +1,9 @@
+<snippet>
+  <content><![CDATA[
+[% date.format( ${1:date}, '%F' ).replace( '-0?', '-' ).replace( '^(\d{4})-(\d{1,2})-(\d{1,2})', '$1年$2月$3日' ) %]
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>datef</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <!-- <scope>source.html</scope> -->
+</snippet>

@@ -17,6 +17,7 @@ import json
 import locale
 from numbers import Number
 import os
+import getpass
 import re
 import shutil
 from string import Template
@@ -26,6 +27,9 @@ import subprocess
 import sys
 import tempfile
 from xml.etree import ElementTree
+
+if sublime.platform() != 'windows':
+    import pwd
 
 #
 # Public constants
@@ -55,7 +59,7 @@ ANSI_COLOR_RE = re.compile(r'\033\[[0-9;]*m')
 UNSAVED_FILENAME = 'untitled'
 
 # Temp directory used to store temp files for linting
-tempdir = os.path.join(tempfile.gettempdir(), 'SublimeLinter3')
+tempdir = os.path.join(tempfile.gettempdir(), 'SublimeLinter3-' + getpass.getuser())
 
 
 # settings utils
@@ -993,7 +997,7 @@ def find_windows_python(version):
         stripped_version = version.replace('.', '')
         prefix = os.path.abspath('\\Python')
         prefix_len = len(prefix)
-        dirs = glob(prefix + '*')
+        dirs = sorted(glob(prefix + '*'), reverse=True)
         from . import persist
 
         # Try the exact version first, then the major version
@@ -1018,6 +1022,11 @@ def find_windows_python(version):
 def find_python_script(python_path, script):
     """Return the path to the given script, or None if not found."""
     if sublime.platform() in ('osx', 'linux'):
+        pyenv = which('pyenv')
+        if pyenv:
+            out = run_shell_cmd((pyenv, 'which', script)).strip().decode()
+            if os.path.isfile(out):
+                return out
         return which(script)
     else:
         # On Windows, scripts may be .exe files or .py files in <python directory>/Scripts
@@ -1191,14 +1200,33 @@ def communicate(cmd, code=None, output_stream=STREAM_STDOUT, env=None):
 
 def create_tempdir():
     """Create a directory within the system temp directory used to create temp files."""
-    if os.path.isdir(tempdir):
-        shutil.rmtree(tempdir)
+    try:
+        if os.path.isdir(tempdir):
+            shutil.rmtree(tempdir)
 
-    os.mkdir(tempdir)
+        os.mkdir(tempdir)
 
-    # Make sure the directory can be removed by anyone in case the user
-    # runs ST later as another user.
-    os.chmod(tempdir, stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)
+        # Make sure the directory can be removed by anyone in case the user
+        # runs ST later as another user.
+        os.chmod(tempdir, stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)
+
+    except PermissionError:
+        if sublime.platform() != 'windows':
+            current_user = pwd.getpwuid(os.geteuid())[0]
+            temp_uid = os.stat(tempdir).st_uid
+            temp_user = pwd.getpwuid(temp_uid)[0]
+            message = (
+                'The SublimeLinter temp directory:\n\n{0}\n\ncould not be cleared '
+                'because it is owned by \'{1}\' and you are logged in as \'{2}\'. '
+                'Please use sudo to remove the temp directory from a terminal.'
+            ).format(tempdir, temp_user, current_user)
+        else:
+            message = (
+                'The SublimeLinter temp directory ({}) could not be reset '
+                'because it belongs to a different user.'
+            ).format(tempdir)
+
+        sublime.error_message(message)
 
     from . import persist
     persist.debug('temp directory:', tempdir)

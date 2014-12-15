@@ -1,0 +1,9 @@
+<snippet>
+  <content><![CDATA[
+warn '-' x 20 . '${1:comment}' . '-' x 20;
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>motd</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.perl</scope>
+</snippet>
