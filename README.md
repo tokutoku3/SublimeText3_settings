@@ -31,4 +31,10 @@ Sublime Text settings for Mac OS X.
 
 あとはcloneすれば動くはず
 
-    $ git clone https://github.com/tokutoku3/SublimeText3_settings.git
+    $ git clone https://github.com/tokutoku3/SublimeText3_settings.git Packages
+
+---
+
+Package Controlのインストールも忘れない
+http://matome.naver.jp/odai/2138657649717812101
+
