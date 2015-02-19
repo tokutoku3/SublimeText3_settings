@@ -1,4 +1,7 @@
 {
+	"in_process_packages":
+	[
+	],
 	"installed_packages":
 	[
 		"All Autocomplete",
@@ -20,6 +23,7 @@
 		"Markdown Extended",
 		"Monokai Extended",
 		"OmniMarkupPreviewer",
+		"Package Control",
 		"Phpcs",
 		"Predawn",
 		"Pretty JSON",

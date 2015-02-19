@@ -13,6 +13,7 @@
 import json
 import hashlib
 
+from functools import lru_cache
 from os import path, access, X_OK
 from . import linter, persist, util
 
@@ -158,7 +159,7 @@ class NodeLinter(linter.Linter):
 
         parent = path.normpath(path.join(cwd, '../'))
 
-        if parent == '/':
+        if parent == '/' or parent == cwd:
             return None
 
         return self.rev_parse_manifest_path(parent)
@@ -225,3 +226,26 @@ class NodeLinter(linter.Linter):
 
         f = open(self.manifest_path, 'r')
         return hashlib.sha1(f.read().encode('utf-8')).hexdigest()
+
+    @classmethod
+    @lru_cache(maxsize=None)
+    def can_lint(cls, syntax):
+        """
+        Determine if the linter can handle the provided syntax.
+
+        This is an optimistic determination based on the linter's syntax alone.
+        """
+        can = False
+        syntax = syntax.lower()
+
+        if cls.syntax:
+            if isinstance(cls.syntax, (tuple, list)):
+                can = syntax in cls.syntax
+            elif cls.syntax == '*':
+                can = True
+            elif isinstance(cls.syntax, str):
+                can = syntax == cls.syntax
+            else:
+                can = cls.syntax.match(syntax) is not None
+
+        return can

@@ -8,9 +8,9 @@
 	"highlight_line": true,
 	"ignored_packages":
 	[
+		"HTML5",
 		"LineEndings",
-		"jQuery",
-		"HTML5"
+		"jQuery"
 	],
 	"indent_guide_options":
 	[
@@ -24,6 +24,5 @@
 	],
 	"show_encoding": true,
 	"tab_size": 2,
-	"theme": "Centurion.sublime-theme",
-	"translate_tabs_to_spaces": true
+	"theme": "Centurion.sublime-theme"
 }
