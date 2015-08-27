@@ -4,19 +4,23 @@
 	],
 	"installed_packages":
 	[
+		"Alignment",
 		"All Autocomplete",
 		"ApacheConf.tmLanguage",
 		"AutoFileName",
 		"Better CoffeeScript",
 		"BoundKeys",
 		"BracketHighlighter",
+		"Case Conversion",
 		"Codecs33",
+		"Color Highlighter",
 		"ColorPicker",
 		"ConvertToUTF8",
 		"CSS Snippets",
 		"DocBlockr",
 		"Dotfiles Syntax Highlighting",
 		"Emmet",
+		"GitGutter",
 		"Hayaku - tools for writing CSS faster",
 		"HTML5",
 		"jQuery",
@@ -40,10 +44,14 @@
 		"SublimeLinter-phplint",
 		"SublimeLinter-ruby",
 		"SyncedSideBar",
+		"Terminal",
+		"Terminality",
 		"Theme - Centurion",
+		"Theme - Cobalt2",
 		"Theme - Flatland",
 		"Theme - itg.flat",
 		"Theme - Spacegray",
-		"Tomorrow Color Schemes"
+		"Tomorrow Color Schemes",
+		"zenburn"
 	]
 }

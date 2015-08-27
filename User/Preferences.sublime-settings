@@ -1,5 +1,5 @@
 {
-	"color_scheme": "Packages/User/Twilight2.tmTheme",
+	"color_scheme": "Packages/User/SublimeLinter/base16-ocean.dark (SL).tmTheme",
 	"disable_formatted_linebreak": true,
 	"draw_indent_guides": true,
 	"draw_white_space": "all",
@@ -8,7 +8,10 @@
 	"highlight_line": true,
 	"ignored_packages":
 	[
+		"Terminality",
 		"LineEndings",
+		"Terminal",
+		"Color Highlighter",
 		"jQuery",
 		"HTML5"
 	],
@@ -24,5 +27,6 @@
 	],
 	"show_encoding": true,
 	"tab_size": 2,
-	"theme": "Centurion.sublime-theme"
+	"theme": "Cobalt2.sublime-theme",
+	"translate_tabs_to_spaces": true
 }
