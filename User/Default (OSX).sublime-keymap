@@ -1,3 +1,5 @@
 [
 	{ "keys": ["ctrl+super+b"], "command": "toggle_side_bar" },
+  // alighment
+    { "keys": ["ctrl+i"], "command": "alignment" },
 ]
