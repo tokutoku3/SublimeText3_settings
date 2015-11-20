@@ -1,0 +1,1 @@
+{"platforms": ["*"], "sublime_text": "*", "description": "Plugin to format PHP code - supports also PSR1/2", "dependencies": [], "url": "https://github.com/phpfmt/sublime-phpfmt", "version": "9.18.0"}

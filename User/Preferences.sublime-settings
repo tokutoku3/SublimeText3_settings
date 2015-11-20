@@ -1,19 +1,32 @@
 {
-	"color_scheme": "Packages/User/SublimeLinter/base16-ocean.dark (SL).tmTheme",
+	"alignment_chars":
+	[
+		":",
+		"=",
+		"=>"
+	],
+	"alignment_space_chars":
+	[
+		"=",
+		"=>"
+	],
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
 	"disable_formatted_linebreak": true,
 	"draw_indent_guides": true,
 	"draw_white_space": "all",
-	"font_face": "Ricty",
-	"font_size": 15,
+	// "font_face": "Ricty",
+	"font_face": "SourceHanCodeJP-Regular",
+	"font_size": 13,
 	"highlight_line": true,
 	"ignored_packages":
 	[
 		"Color Highlighter",
-		"Terminality",
-		"Terminal",
+		"HTML5",
 		"jQuery",
 		"LineEndings",
-		"HTML5"
+		"phpfmt",
+		"Terminal",
+		"Terminality"
 	],
 	"indent_guide_options":
 	[
@@ -27,12 +40,10 @@
 	],
 	"show_encoding": true,
 	"tab_size": 2,
-	"theme": "Cobalt2.sublime-theme",
+	"theme": "Material-Theme.sublime-theme",
 	"translate_tabs_to_spaces": true,
-		"alignment_chars": [
-            ":",  "=", "=>"
-        ],
-	"alignment_space_chars": [
-            "=", "=>"
-        ],
+	"overlay_scroll_bars": "enabled",
+	"always_show_minimap_viewport": true,
+	"bold_folder_labels": true,
+	"indent_guide_options": [ "draw_normal", "draw_active" ]
 }
